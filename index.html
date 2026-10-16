@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rahul Shinde — Cybersecurity, Identity and Access Management, IGA, PAM, cloud security, and security assessment services.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Rahul Shinde | Cybersecurity & Identity Security</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-soft: #15233a;
+      --text: #edf4ff;
+      --muted: #a9b8ce;
+      --accent: #66c7ff;
+      --accent-2: #8ce0c2;
+      --line: rgba(180, 205, 238, .16);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at top right, rgba(38, 105, 151, .20), transparent 38%), var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11, 18, 32, .88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { color: var(--text); font-weight: 800; letter-spacing: .02em; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: .93rem; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .hero { padding: 88px 0 68px; }
+    .eyebrow { color: var(--accent-2); text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 800; }
+    h1 { margin: 14px 0 12px; font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.05; letter-spacing: -.045em; }
+    .hero h2 { color: #c4d6ee; font-size: clamp(1.1rem, 2.5vw, 1.55rem); font-weight: 550; margin: 0 0 22px; }
+    .intro { color: var(--muted); max-width: 760px; font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; justify-content: center; align-items: center; padding: 11px 17px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); font-weight: 700; }
+    .button.primary { background: var(--accent); color: #061321; border-color: var(--accent); }
+    .button:hover { text-decoration: none; transform: translateY(-1px); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .chip { color: #c8d8ed; border: 1px solid var(--line); background: rgba(255,255,255,.025); padding: 5px 10px; border-radius: 999px; font-size: .84rem; }
+    section { padding: 58px 0; border-top: 1px solid var(--line); }
+    .section-heading { margin-bottom: 28px; }
+    .section-heading .eyebrow { margin-bottom: 7px; }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.35rem); line-height: 1.2; margin: 0 0 12px; letter-spacing: -.025em; }
+    h3 { margin: 0 0 9px; font-size: 1.1rem; }
+    .section-heading p, .muted { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .card { background: linear-gradient(155deg, rgba(21,35,58,.9), rgba(17,28,46,.9)); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+    .card p { color: var(--muted); margin: 0; }
+    .icon { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: rgba(102,199,255,.10); color: var(--accent); font-size: 1.2rem; margin-bottom: 16px; }
+    .two-col { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; align-items: start; }
+    .bullet-list { padding-left: 20px; color: var(--muted); }
+    .bullet-list li { margin: 8px 0; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: rgba(140,224,194,.08); color: #b8f0dc; border: 1px solid rgba(140,224,194,.18); border-radius: 8px; padding: 6px 9px; font-size: .86rem; }
+    .note { border-left: 3px solid var(--accent-2); padding: 13px 16px; background: rgba(140,224,194,.06); color: var(--muted); border-radius: 0 10px 10px 0; }
+    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(120deg, rgba(102,199,255,.10), rgba(140,224,194,.06)); }
+    footer { padding: 26px 0 36px; color: var(--muted); font-size: .9rem; }
+    .small { font-size: .88rem; }
+    @media (max-width: 780px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 15px 0; gap: 8px; }
+      .nav-links { gap: 12px; }
+      .hero { padding: 62px 0 48px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .two-col { grid-template-columns: 1fr; }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 44px 0; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">RAHUL SHINDE<span style="color:var(--accent)">.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="border-top:0">
+      <div class="container">
+        <div class="eyebrow">Cybersecurity · Identity · Access Governance</div>
+        <h1>Rahul Shinde</h1>
+        <h2>Cybersecurity &amp; Identity Security Professional</h2>
+        <p class="intro">
+          I work across Identity and Access Management, Identity Governance and Administration,
+          privileged access, security operations, and automation—helping organizations strengthen
+          access controls, improve governance, and build reliable security processes.
+        </p>
+        <div class="actions">
+          <!-- Upload your PDF to the repository root and name it resume.pdf to enable this link. -->
+          <a class="button primary" href="resume.pdf" target="_blank" rel="noopener">View / Download Resume ↗</a>
+          <a class="button" href="#expertise">Explore Expertise</a>
+          <a class="button" href="#contact">Contact Me</a>
+        </div>
+        <div class="chips" aria-label="Areas of expertise">
+          <span class="chip">IAM / IGA</span><span class="chip">Saviynt</span>
+          <span class="chip">RSA IGL</span><span class="chip">Microsoft Entra ID</span>
+          <span class="chip">PAM</span><span class="chip">Terraform</span>
+          <span class="chip">Security Automation</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container two-col">
+        <div>
+          <div class="section-heading">
+            <div class="eyebrow">Professional profile</div>
+            <h2>Security that enables the business</h2>
+          </div>
+          <p class="muted">
+            My background spans identity governance platforms, user lifecycle management,
+            access provisioning, role-based access control, authentication, and operational
+            security. I enjoy connecting technical implementation with risk reduction,
+            auditability, and practical business outcomes.
+          </p>
+          <p class="muted">
+            I am interested in opportunities across IAM/IGA leadership, identity security
+            architecture, security engineering, and advisory work with organizations looking
+            to assess and improve their cybersecurity readiness.
+          </p>
+        </div>
+        <aside class="card">
+          <h3>Professional focus</h3>
+          <ul class="bullet-list">
+            <li>Identity governance and access lifecycle</li>
+            <li>Enterprise access controls and privileged identity</li>
+            <li>Cloud identity and secure integrations</li>
+            <li>Automation, testing, and operational improvement</li>
+            <li>Cybersecurity readiness assessments for smaller organizations</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Core capabilities</div>
+          <h2>Technical expertise</h2>
+          <p>Selected platforms and skills from my professional toolkit.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="icon" aria-hidden="true">◈</div>
+            <h3>Identity Governance (IGA)</h3>
+            <p>Saviynt IGA, RSA Aveksa IGL, access reviews, certifications, provisioning, and identity lifecycle processes.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌘</div>
+            <h3>Identity &amp; Access Management</h3>
+            <p>Microsoft Entra ID, RBAC, MFA, SSO, Conditional Access, Privileged Identity Management, and Microsoft Graph.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">🔐</div>
+            <h3>Privileged Access &amp; Controls</h3>
+            <p>Privileged access management concepts, CyberArk, least privilege, access governance, and control validation.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌁</div>
+            <h3>Automation &amp; Infrastructure</h3>
+            <p>Terraform, Python, PowerShell, SQL, Git, Jenkins, and infrastructure automation workflows.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">▤</div>
+            <h3>Monitoring &amp; Operations</h3>
+            <p>Splunk, Dynatrace, security logging, troubleshooting, operational dashboards, and incident support.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">✓</div>
+            <h3>Quality Engineering</h3>
+            <p>IAM workflow validation, API testing, Playwright/Selenium automation concepts, and CI/CD-integrated QA.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects &amp; areas of practice</h2>
+          <p>Use these cards to describe your contribution and outcomes. Keep all examples free of confidential employer information.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>IGA Platform Modernization</h3>
+            <p>Identity governance migration and integration planning, including catalog collection, connector design, and lifecycle workflow validation.</p>
+          </article>
+          <article class="card">
+            <h3>Infrastructure as Code for IAM</h3>
+            <p>Exploring repeatable IAM configuration and deployment patterns using Terraform, source control, and controlled release processes.</p>
+          </article>
+          <article class="card">
+            <h3>IAM Test Automation</h3>
+            <p>Building automated checks for identity workflows and integrating repeatable testing into CI/CD pipelines.</p>
+          </article>
+          <article class="card">
+            <h3>Identity Security Architecture</h3>
+            <p>Applying least privilege, role-based access, strong authentication, and privileged access controls to enterprise identity use cases.</p>
+          </article>
+          <article class="card">
+            <h3>Security Monitoring</h3>
+            <p>Designing useful log queries and operational views to improve visibility into identity platform events and job outcomes.</p>
+          </article>
+          <article class="card">
+            <h3>Cybersecurity Readiness</h3>
+            <p>Developing a practical assessment approach for small businesses covering governance, identity, endpoints, data, resilience, and incident readiness.</p>
+          </article>
+        </div>
+        <p class="note small" style="margin-top:18px">Before publishing, replace generic project descriptions with accurate examples of your role, approach, and measurable outcomes. Do not disclose internal system details or customer data.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Advisory &amp; consulting</div>
+          <h2>Cybersecurity readiness for growing businesses</h2>
+          <p>Practical, right-sized security guidance for small and medium-sized organizations.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="icon" aria-hidden="true">◎</div>
+            <h3>Cybersecurity Baseline Review</h3>
+            <p>Review current security practices, identify key gaps, and prioritize realistic improvements.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">♙</div>
+            <h3>Identity &amp; Access Review</h3>
+            <p>Assess account lifecycle, administrator access, MFA coverage, access reviews, and joiner/mover/leaver processes.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">▦</div>
+            <h3>Action Roadmap</h3>
+            <p>Provide a prioritized improvement plan with ownership, suggested timelines, and practical next steps.</p>
+          </article>
+        </div>
+        <p class="note small" style="margin-top:18px">Services are advisory and assessment-oriented. Confirm scope, authorization, confidentiality, and applicable requirements in writing before any assessment or testing.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">Let's connect</div>
+            <h2 style="margin-top:8px">Discuss a role or security challenge</h2>
+            <p class="muted" style="margin-bottom:0">For IAM/security opportunities, professional networking, or cybersecurity readiness consulting.</p>
+          </div>
+          <div class="actions" style="margin-top:0">
+            <!-- Replace the placeholder URLs below with your real contact details. -->
+            <a class="button primary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn Profile ↗</a>
+            <a class="button" href="mailto:YOUR_EMAIL@example.com">Email Me</a>
+          </div>
+        </div>
+        <p class="muted small" style="margin-top:18px">Please replace the LinkedIn link and email placeholder with your actual professional contact details before publishing.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px">
+      <span>© <span id="year">2026</span> Rahul Shinde. All rights reserved.</span>
+      <span>Cybersecurity · Identity Security · Advisory</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
