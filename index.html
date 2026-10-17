@@ -1,298 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rahul Shinde — Cybersecurity, Identity and Access Management, IGA, PAM, cloud security, and security assessment services.">
-  <meta name="theme-color" content="#0b1220">
-  <title>Rahul Shinde | Cybersecurity & Identity Security</title>
-  <style>
-    :root {
-      --bg: #0b1220;
-      --panel: #111c2e;
-      --panel-soft: #15233a;
-      --text: #edf4ff;
-      --muted: #a9b8ce;
-      --accent: #66c7ff;
-      --accent-2: #8ce0c2;
-      --line: rgba(180, 205, 238, .16);
-      --max: 1120px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: radial-gradient(ellipse at top right, rgba(38, 105, 151, .20), transparent 38%), var(--bg);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; }
-    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(11, 18, 32, .88); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { color: var(--text); font-weight: 800; letter-spacing: .02em; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: .93rem; }
-    .nav-links a { color: var(--muted); }
-    .nav-links a:hover { color: var(--text); }
-    .hero { padding: 88px 0 68px; }
-    .eyebrow { color: var(--accent-2); text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 800; }
-    h1 { margin: 14px 0 12px; font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.05; letter-spacing: -.045em; }
-    .hero h2 { color: #c4d6ee; font-size: clamp(1.1rem, 2.5vw, 1.55rem); font-weight: 550; margin: 0 0 22px; }
-    .intro { color: var(--muted); max-width: 760px; font-size: 1.08rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .button { display: inline-flex; justify-content: center; align-items: center; padding: 11px 17px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); font-weight: 700; }
-    .button.primary { background: var(--accent); color: #061321; border-color: var(--accent); }
-    .button:hover { text-decoration: none; transform: translateY(-1px); }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-    .chip { color: #c8d8ed; border: 1px solid var(--line); background: rgba(255,255,255,.025); padding: 5px 10px; border-radius: 999px; font-size: .84rem; }
-    section { padding: 58px 0; border-top: 1px solid var(--line); }
-    .section-heading { margin-bottom: 28px; }
-    .section-heading .eyebrow { margin-bottom: 7px; }
-    h2 { font-size: clamp(1.75rem, 3vw, 2.35rem); line-height: 1.2; margin: 0 0 12px; letter-spacing: -.025em; }
-    h3 { margin: 0 0 9px; font-size: 1.1rem; }
-    .section-heading p, .muted { color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-    .card { background: linear-gradient(155deg, rgba(21,35,58,.9), rgba(17,28,46,.9)); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-    .card p { color: var(--muted); margin: 0; }
-    .icon { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: rgba(102,199,255,.10); color: var(--accent); font-size: 1.2rem; margin-bottom: 16px; }
-    .two-col { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; align-items: start; }
-    .bullet-list { padding-left: 20px; color: var(--muted); }
-    .bullet-list li { margin: 8px 0; }
-    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { background: rgba(140,224,194,.08); color: #b8f0dc; border: 1px solid rgba(140,224,194,.18); border-radius: 8px; padding: 6px 9px; font-size: .86rem; }
-    .note { border-left: 3px solid var(--accent-2); padding: 13px 16px; background: rgba(140,224,194,.06); color: var(--muted); border-radius: 0 10px 10px 0; }
-    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(120deg, rgba(102,199,255,.10), rgba(140,224,194,.06)); }
-    footer { padding: 26px 0 36px; color: var(--muted); font-size: .9rem; }
-    .small { font-size: .88rem; }
-    @media (max-width: 780px) {
-      .nav { align-items: flex-start; flex-direction: column; padding: 15px 0; gap: 8px; }
-      .nav-links { gap: 12px; }
-      .hero { padding: 62px 0 48px; }
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .two-col { grid-template-columns: 1fr; }
-      .contact-panel { align-items: flex-start; flex-direction: column; }
-    }
-    @media (max-width: 520px) {
-      .container { width: min(100% - 28px, var(--max)); }
-      .grid { grid-template-columns: 1fr; }
-      section { padding: 44px 0; }
-      .hero { padding-top: 48px; }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rahul D. Shinde — Lead Information Security Engineer specializing in IAM, PAM, cloud identity, security architecture, and DevSecOps.">
+<meta name="theme-color" content="#0b1220">
+<title>Rahul D. Shinde | Lead Information Security Engineer</title>
+<style>
+:root{--bg:#0b1220;--panel:#111c2e;--text:#edf4ff;--muted:#a9b8ce;--accent:#66c7ff;--mint:#8ce0c2;--line:rgba(180,205,238,.16);--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top right,rgba(38,105,151,.2),transparent 38%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+header{position:sticky;top:0;z-index:10;background:rgba(11,18,32,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{color:var(--text);font-weight:800;letter-spacing:.03em}.navlinks{display:flex;flex-wrap:wrap;gap:18px;font-size:.92rem}.navlinks a{color:var(--muted)}
+.hero{padding:82px 0 64px}.eyebrow{color:var(--mint);text-transform:uppercase;letter-spacing:.15em;font-size:.77rem;font-weight:800}h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.05;letter-spacing:-.045em;margin:14px 0}.hero h2{font-size:clamp(1.15rem,2.5vw,1.55rem);font-weight:550;color:#c4d6ee;margin:0 0 20px}.intro{max-width:800px;color:var(--muted);font-size:1.08rem}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 17px;border:1px solid var(--line);border-radius:10px;color:var(--text);font-weight:700}.btn.primary{background:var(--accent);color:#061321;border-color:var(--accent)}.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.chips,.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.chip{color:#c8d8ed;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:5px 10px;border-radius:999px;font-size:.84rem}
+section{padding:56px 0;border-top:1px solid var(--line)}.heading{margin-bottom:26px}.heading h2{font-size:clamp(1.8rem,3vw,2.35rem);line-height:1.2;margin:7px 0 10px;letter-spacing:-.025em}.heading p,.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:linear-gradient(155deg,rgba(21,35,58,.92),rgba(17,28,46,.92));border:1px solid var(--line);border-radius:16px;padding:22px}.card h3{margin:0 0 8px;font-size:1.08rem}.card p{margin:0;color:var(--muted)}.icon{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;background:rgba(102,199,255,.1);color:var(--accent);font-size:1.15rem;margin-bottom:14px}
+.two{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}.bullets{padding-left:20px;color:var(--muted)}.bullets li{margin:8px 0}.tag{background:rgba(140,224,194,.08);color:#b8f0dc;border:1px solid rgba(140,224,194,.18);border-radius:8px;padding:6px 9px;font-size:.86rem}
+.timeline{display:grid;gap:16px}.role{border-left:2px solid rgba(102,199,255,.6);padding:2px 0 2px 18px}.role h3{margin:0 0 3px}.meta{font-size:.91rem;color:var(--mint);margin-bottom:9px}.role p,.role li{color:var(--muted)}.role ul{padding-left:20px;margin-top:8px}.role li{margin:5px 0}
+.note{border-left:3px solid var(--mint);padding:13px 16px;background:rgba(140,224,194,.06);color:var(--muted);border-radius:0 10px 10px 0}.contact{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(120deg,rgba(102,199,255,.1),rgba(140,224,194,.06))}
+footer{padding:26px 0 36px;color:var(--muted);font-size:.9rem}.small{font-size:.88rem}
+@media(max-width:780px){.nav{align-items:flex-start;flex-direction:column;padding:14px 0;gap:8px}.navlinks{gap:12px}.hero{padding:58px 0 46px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.contact{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.container{width:min(100% - 28px,var(--max))}.grid{grid-template-columns:1fr}section{padding:42px 0}.hero{padding-top:45px}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">RAHUL SHINDE<span style="color:var(--accent)">.</span></a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#projects">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="home" style="border-top:0">
-      <div class="container">
-        <div class="eyebrow">Cybersecurity · Identity · Access Governance</div>
-        <h1>Rahul Shinde</h1>
-        <h2>Cybersecurity &amp; Identity Security Professional</h2>
-        <p class="intro">
-          I work across Identity and Access Management, Identity Governance and Administration,
-          privileged access, security operations, and automation—helping organizations strengthen
-          access controls, improve governance, and build reliable security processes.
-        </p>
-        <div class="actions">
-          <!-- Upload your PDF to the repository root and name it resume.pdf to enable this link. -->
-          <a class="button primary" href="Rahul_Shinde_IS_Resume_.docx" target="_blank" rel="noopener">View / Download Resume ↗</a>
-          <a class="button" href="#expertise">Explore Expertise</a>
-          <a class="button" href="#contact">Contact Me</a>
-        </div>
-        <div class="chips" aria-label="Areas of expertise">
-          <span class="chip">IAM / IGA</span><span class="chip">Saviynt</span>
-          <span class="chip">RSA IGL</span><span class="chip">Microsoft Entra ID</span>
-          <span class="chip">PAM</span><span class="chip">Terraform</span>
-          <span class="chip">Security Automation</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container two-col">
-        <div>
-          <div class="section-heading">
-            <div class="eyebrow">Professional profile</div>
-            <h2>Security that enables the business</h2>
-          </div>
-          <p class="muted">
-            My background spans identity governance platforms, user lifecycle management,
-            access provisioning, role-based access control, authentication, and operational
-            security. I enjoy connecting technical implementation with risk reduction,
-            auditability, and practical business outcomes.
-          </p>
-          <p class="muted">
-            I am interested in opportunities across IAM/IGA leadership, identity security
-            architecture, security engineering, and advisory work with organizations looking
-            to assess and improve their cybersecurity readiness.
-          </p>
-        </div>
-        <aside class="card">
-          <h3>Professional focus</h3>
-          <ul class="bullet-list">
-            <li>Identity governance and access lifecycle</li>
-            <li>Enterprise access controls and privileged identity</li>
-            <li>Cloud identity and secure integrations</li>
-            <li>Automation, testing, and operational improvement</li>
-            <li>Cybersecurity readiness assessments for smaller organizations</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section id="expertise">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Core capabilities</div>
-          <h2>Technical expertise</h2>
-          <p>Selected platforms and skills from my professional toolkit.</p>
-        </div>
-        <div class="grid">
-          <article class="card">
-            <div class="icon" aria-hidden="true">◈</div>
-            <h3>Identity Governance (IGA)</h3>
-            <p>Saviynt IGA, RSA Aveksa IGL, access reviews, certifications, provisioning, and identity lifecycle processes.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">⌘</div>
-            <h3>Identity &amp; Access Management</h3>
-            <p>Microsoft Entra ID, RBAC, MFA, SSO, Conditional Access, Privileged Identity Management, and Microsoft Graph.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">🔐</div>
-            <h3>Privileged Access &amp; Controls</h3>
-            <p>Privileged access management concepts, CyberArk, least privilege, access governance, and control validation.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">⌁</div>
-            <h3>Automation &amp; Infrastructure</h3>
-            <p>Terraform, Python, PowerShell, SQL, Git, Jenkins, and infrastructure automation workflows.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">▤</div>
-            <h3>Monitoring &amp; Operations</h3>
-            <p>Splunk, Dynatrace, security logging, troubleshooting, operational dashboards, and incident support.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">✓</div>
-            <h3>Quality Engineering</h3>
-            <p>IAM workflow validation, API testing, Playwright/Selenium automation concepts, and CI/CD-integrated QA.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Selected work</div>
-          <h2>Projects &amp; areas of practice</h2>
-          <p>Use these cards to describe your contribution and outcomes. Keep all examples free of confidential employer information.</p>
-        </div>
-        <div class="grid">
-          <article class="card">
-            <h3>IGA Platform Modernization</h3>
-            <p>Identity governance migration and integration planning, including catalog collection, connector design, and lifecycle workflow validation.</p>
-          </article>
-          <article class="card">
-            <h3>Infrastructure as Code for IAM</h3>
-            <p>Exploring repeatable IAM configuration and deployment patterns using Terraform, source control, and controlled release processes.</p>
-          </article>
-          <article class="card">
-            <h3>IAM Test Automation</h3>
-            <p>Building automated checks for identity workflows and integrating repeatable testing into CI/CD pipelines.</p>
-          </article>
-          <article class="card">
-            <h3>Identity Security Architecture</h3>
-            <p>Applying least privilege, role-based access, strong authentication, and privileged access controls to enterprise identity use cases.</p>
-          </article>
-          <article class="card">
-            <h3>Security Monitoring</h3>
-            <p>Designing useful log queries and operational views to improve visibility into identity platform events and job outcomes.</p>
-          </article>
-          <article class="card">
-            <h3>Cybersecurity Readiness</h3>
-            <p>Developing a practical assessment approach for small businesses covering governance, identity, endpoints, data, resilience, and incident readiness.</p>
-          </article>
-        </div>
-        <p class="note small" style="margin-top:18px"></p>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Advisory &amp; consulting</div>
-          <h2>Cybersecurity readiness for growing businesses</h2>
-          <p>Practical, right-sized security guidance for small and medium-sized organizations.</p>
-        </div>
-        <div class="grid">
-          <article class="card">
-            <div class="icon" aria-hidden="true">◎</div>
-            <h3>Cybersecurity Baseline Review</h3>
-            <p>Review current security practices, identify key gaps, and prioritize realistic improvements.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">♙</div>
-            <h3>Identity &amp; Access Review</h3>
-            <p>Assess account lifecycle, administrator access, MFA coverage, access reviews, and joiner/mover/leaver processes.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">▦</div>
-            <h3>Action Roadmap</h3>
-            <p>Provide a prioritized improvement plan with ownership, suggested timelines, and practical next steps.</p>
-          </article>
-        </div>
-        <p class="note small" style="margin-top:18px"></p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-panel">
-          <div>
-            <div class="eyebrow">Let's connect</div>
-            <h2 style="margin-top:8px">Discuss a role or security challenge</h2>
-            <p class="muted" style="margin-bottom:0">For IAM/security opportunities, professional networking, or cybersecurity readiness consulting.</p>
-          </div>
-          <div class="actions" style="margin-top:0">
-            <!-- Replace the placeholder URLs below with your real contact details. -->
-            <a class="button primary" href="https://www.linkedin.com/in/rahul-shinde-66699816/" target="_blank" rel="noopener">LinkedIn Profile ↗</a>
-            <a class="button" href="mailto:rdshinde05@gmail.com">Email Me</a>
-          </div>
-        </div>
-        <p class="muted small" style="margin-top:18px">Thank you for Visiting my Site.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px">
-      <span>© <span id="year">2026</span> Rahul Shinde. All rights reserved.</span>
-      <span>Cybersecurity · Identity Security · Advisory</span>
-    </div>
-  </footer>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+<header><div class="container nav"><a class="brand" href="#home">RAHUL D. SHINDE<span style="color:var(--accent)">.</span></a><nav class="navlinks" aria-label="Main navigation"><a href="#about">Profile</a><a href="#expertise">Expertise</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a></nav></div></header>
+<main>
+<section class="hero" id="home" style="border-top:0"><div class="container">
+<div class="eyebrow">IAM · PAM · Cloud Identity · Security Architecture</div><h1>Rahul D. Shinde</h1><h2>Lead Information Security Engineer</h2>
+<p class="intro">Cybersecurity and identity security professional with 16+ years of experience across enterprise infrastructure, Identity and Access Management, Privileged Access Management, cloud identity, security architecture, and DevSecOps in large-scale global environments.</p>
+<div class="actions"><a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">View / Download Resume ↗</a><a class="btn" href="#experience">Explore Experience</a><a class="btn" href="mailto:rdshinde05@gmail.com">Email Me</a></div>
+<div class="chips"><span class="chip">Saviynt IGA</span><span class="chip">RSA Aveksa / IGL</span><span class="chip">Microsoft Entra ID</span><span class="chip">CyberArk PAM</span><span class="chip">Terraform</span><span class="chip">Python / PowerShell</span><span class="chip">Zero Trust</span></div>
+</div></section>
+<section id="about"><div class="container two"><div><div class="heading"><div class="eyebrow">Professional profile</div><h2>Security that enables the business</h2></div>
+<p class="muted">Technical leader experienced in security architecture, privileged-access controls, identity governance transformations, platform evaluation, mentoring, and cross-functional delivery. Focused on least privilege, security by design, operational resilience, and enterprise security standards.</p>
+<p class="muted">Hands-on expertise spans Microsoft Entra ID, Active Directory, CyberArk, RBAC, MFA, SSO, Conditional Access, PIM/JIT access, Zero Trust, Saviynt IGA, RSA Aveksa/IGL, hybrid identity, Terraform, Jenkins, Python, PowerShell, REST APIs, and CI/CD.</p></div>
+<aside class="card"><h3>Career focus</h3><ul class="bullets"><li>IAM / IGA technical leadership and transformation</li><li>Identity security and security architecture</li><li>Privileged access and Zero Trust controls</li><li>Cloud identity integrations and DevSecOps</li><li>Security assessments, risk and control effectiveness</li></ul><p class="small muted">Location: Pune, India</p></aside></div></section>
+<section id="expertise"><div class="container"><div class="heading"><div class="eyebrow">Core capabilities</div><h2>Technical expertise</h2><p>Skills and platforms listed in my resume.</p></div><div class="grid">
+<article class="card"><div class="icon" aria-hidden="true">◈</div><h3>Identity &amp; Access Management</h3><p>Microsoft Entra ID, Active Directory, identity lifecycle, RBAC, access governance, access certification, MFA, SSO, Conditional Access.</p></article>
+<article class="card"><div class="icon" aria-hidden="true">⌑</div><h3>IGA &amp; Privileged Access</h3><p>Saviynt IGA, RSA Aveksa/IGL 6.9–8.0, CyberArk PAM, PIM, JIT access, least privilege, service account security.</p></article>
+<article class="card"><div class="icon" aria-hidden="true">⌘</div><h3>Cloud, DevSecOps &amp; Automation</h3><p>Terraform, Git, Jenkins, CI/CD, Python, PowerShell, SQL, REST APIs, API Gateway, mTLS, automated QA.</p></article>
+<article class="card"><div class="icon" aria-hidden="true">◇</div><h3>Security Engineering</h3><p>Security architecture reviews, threat modeling, risk assessments, incident response, forensic investigations, compliance evaluations.</p></article>
+<article class="card"><div class="icon" aria-hidden="true">▤</div><h3>Monitoring &amp; Security Tools</h3><p>Splunk, Dynatrace, StealthAUDIT, Microsoft Threat Modeling Tool, OWASP Threat Dragon.</p></article>
+<article class="card"><div class="icon" aria-hidden="true">▦</div><h3>Infrastructure &amp; Platforms</h3><p>Windows Server, Linux (RHEL/CentOS), SQL Server, Oracle, PostgreSQL, VMware, data center and IaaS.</p></article>
+</div><div class="tags"><span class="tag">BMC BladeLogic</span><span class="tag">HPSA</span><span class="tag">XL Release</span><span class="tag">ServiceNow</span><span class="tag">Remedy</span><span class="tag">Qualys</span><span class="tag">Infoblox IPAM</span></div></div></section>
+<section id="experience"><div class="container"><div class="heading"><div class="eyebrow">Career history</div><h2>Professional experience</h2><p>Selected responsibilities and outcomes from my resume.</p></div><div class="timeline">
+<article class="role"><h3>Lead Information Security Engineer · Mastercard Pvt. Ltd.</h3><div class="meta">Pune, India · Nov 2018 – Aug 2019; Feb 2021 – Present</div><ul>
+<li>Lead enterprise IAM services supporting 50K+ users and 25+ enterprise applications across identity lifecycle, provisioning, RBAC, authentication, SSO, MFA, and access governance.</li>
+<li>Design least-privilege, JIT, PIM, and Zero Trust controls; lead Entra ID capabilities and privileged access governance.</li>
+<li>Drive RSA IGL to Saviynt IGA transformation across lifecycle management, application onboarding, provisioning/deprovisioning, entitlement management, RBAC, and access certification.</li>
+<li>Architect Saviynt integrations using REST APIs, API Gateway, mTLS, Terraform, and automation for secure SaaS-to-enterprise connectivity.</li>
+<li>Apply Terraform, Git, Jenkins, automated QA, Python, PowerShell, and SQL to improve deployment consistency, validation, reporting, and security operations.</li>
+<li>Conduct architecture reviews, threat modeling, risk assessments, compliance evaluations, and incident investigations; provide technical leadership and mentoring.</li></ul></article>
+<article class="role"><h3>Data Center Technician · Amazon DSKK</h3><div class="meta">Japan · Sep 2019 – Oct 2020</div><ul><li>Monitored and troubleshot network, server, and infrastructure issues; installed and replaced server racks, servers, and network devices.</li><li>Coordinated critical incident restoration and followed security, change-management, data center, and business-continuity procedures.</li></ul></article>
+<article class="role"><h3>Senior System Engineer · SunGard AS India Pvt. Ltd.</h3><div class="meta">Pune, India · Nov 2016 – Nov 2018</div><ul><li>Led L2/L3 support, global coordination, client communications, change/release processes, and server, network, and storage migrations.</li><li>Coordinated technical escalations with HP, Red Hat, Oracle, Microsoft Windows, and VMware; automated recurring operational tasks and reporting.</li></ul></article>
+<article class="role"><h3>Senior Member Technical · ADP Pvt. Ltd.</h3><div class="meta">Pune, India · Aug 2010 – Nov 2016</div><ul><li>Deployed Windows and Linux systems across physical and virtual environments and supported vulnerability remediation based on Qualys findings.</li><li>Partnered with VMware engineering on a CSV-driven rapid VM provisioning system, reducing deployment SLA from 5 days to 2 days.</li><li>Delivered PXE-based physical server build automation, reducing deployment SLA from 8 days to 3 days.</li></ul></article>
+</div><div class="note small" style="margin-top:22px">Selected impact: reduced privileged-access exposure through JIT/PIM and least-privilege controls; improved IAM engineering efficiency with infrastructure as code, CI/CD, automation, and repeatable QA.</div></div></section>
+<section id="education"><div class="container two"><div><div class="heading"><div class="eyebrow">Education</div><h2>Academic background</h2></div><article class="card"><h3>Bachelor of Computer Science</h3><p>Poona College of Arts, Science and Commerce · Pune University · 2010</p></article></div>
+<div><div class="heading"><div class="eyebrow">Professional development</div><h2>Training &amp; certifications</h2></div><article class="card"><ul class="bullets"><li>Microsoft Certified: MCSA 70-410 (Windows Server 2012)</li><li>CISSP Boot Camp Program</li><li>Red Hat Enterprise Linux 6.0 Training, Linux Academy</li><li>BMC BladeLogic Server Automation Training</li><li>ITIL Training, ADP Corporate Training</li></ul></article></div></div></section>
+<section id="contact"><div class="container"><div class="contact"><div><div class="eyebrow">Get in touch</div><h2 style="margin:8px 0">Let's connect</h2><p class="muted" style="margin:0">For IAM/security leadership opportunities, professional networking, or cybersecurity discussions.</p></div>
+<div class="actions" style="margin-top:0"><a class="btn primary" href="mailto:rdshinde05@gmail.com">rdshinde05@gmail.com</a><a class="btn" href="https://www.linkedin.com/in/rahul-shinde-66699816" target="_blank" rel="noopener">LinkedIn Profile ↗</a><a class="btn" href="tel:+919850080705">+91 98500 80705</a></div></div>
+<p class="muted small" style="margin-top:15px">Review contact details and employment dates before publishing. The resume PDF link expects a file named <code>resume.pdf</code> in the same repository folder.</p></div></section>
+</main>
+<footer><div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span>© <span id="year">2026</span> Rahul D. Shinde</span><span>Lead Information Security Engineer · Pune, India</span></div></footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body></html>
